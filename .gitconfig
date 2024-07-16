@@ -1,0 +1,27 @@
+[user]
+	email = hazzard993@gmail.com
+	name = hazzard993
+
+[format]
+	pretty = %C(cyan dim)%h%C(reset)%C(yellow)%d%C(reset) %s %C(dim)by %an %ar.%C(reset)
+
+[core]
+	autocrlf = input
+	editor = code --wait
+
+[push]
+	default = current
+	followTags = true
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[init]
+	defaultBranch = main
+
+[merge]
+	ff = only
+
+[pull]
+	ff = only
