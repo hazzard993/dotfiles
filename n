@@ -1,0 +1,196 @@
+#!/usr/bin/env bash
+# of note
+# requires batcat
+
+for arg in "$@"; do
+  case $arg in
+    bash)
+      cat <<-'EOF' | batcat --plain --language bash
+bash                     # new shell
+bash --norc --noprofile  # shell, no configs
+bash -n file.sh          # syntax check
+echo $BASH_VERSION       # running version
+
+# also bash-profile
+# also bash-debugging
+# also bash-piping
+# also bash-lists
+# also bash-brace-expansion
+EOF
+      ;;
+
+    bash-profile)
+      cat <<-EOF | batcat --plain --language bash
+# rc configs
+more ~/.bashrc
+more /etc/bash.bashrc
+
+# profile config (in order, login mode)
+more /etc/profile
+more ~/.bash_profile
+more ~/.bash_login
+more ~/.profile
+EOF
+      ;;
+
+    bash-debugging)
+      cat <<-EOF | batcat --plain --language bash
+bash -v  # print shell input lines as they are read
+bash -x  # print executed commands and arguments
+EOF
+      ;;
+
+    bash-pipes | bash-piping)
+      cat <<-'EOF' | batcat --plain --language bash
+./program | echo       # stdout to echo
+./program |& echo      # stdout+stderr to echo
+./program 2>&1 | echo  # stdout+stderr to echo
+$?                     # exit status of last command, unless using pipefail
+EOF
+      ;;
+
+    bash-lists)
+      cat <<-EOF | batcat --plain --language bash
+echo one ; echo at ; echo a ; echo time
+./a && ./b  # a, then b on success
+./a || ./b  # a, then b on failure
+# lists are a commonly described structure, group of statements
+EOF
+      ;;
+
+    bash-brace-expansion)
+      cat <<-'EOF' | batcat --plain --language bash
+echo {hello,world}       # hello world
+echo "{hello,world}"     # {hello,world}
+echo file.{txt,jpg,mov}  # file.txt file.jpg file.mov
+echo {1..10}             # 1 2 3 4 5 6 7 8 9 10
+echo {a..j}              # a b c d e f g h i j
+
+# store as array
+filename='file'
+echo "$filename."{txt,jpg,mov}     # file.txt file.jpg file.mov
+array=("$filename."{txt,jpg,mov})  # array=(file.txt file.jpg file.mov)
+echo "${array[@]}"
+
+# cartesian product too?
+array=(/etc/{foo,bar,baz},{1,2,3}.txt)
+echo "${#array[@]} items"
+echo -e "${array[@]}"
+  # /etc/foo/1.txt /etc/foo/2.txt /etc/foo/3.txt
+  # /etc/bar/1.txt /etc/bar/2.txt /etc/bar/3.txt
+  # /etc/baz/1.txt /etc/baz/2.txt /etc/baz/3.txt
+EOF
+      ;;
+
+    cloc)
+      cat <<-EOF | batcat --plain --language bash
+cloc .
+cloc file.js
+cloc . --exclude-dir=node_modules
+cloc . --by-file
+EOF
+      ;;
+
+    xxd)
+      cat <<-EOF | batcat --plain --language bash
+xxd file        # hex breakdown of a file
+xxd -l 16 file  # snip magic number
+xxd -c 48 file  # larger columns
+# white, 00, NUL
+# green, readable text
+# red, beyond text range
+# blue, FF
+EOF
+      ;;
+
+    node)
+      cat <<-EOF | batcat --plain --language bash
+node file.js
+node file.ts     # supported
+node -c file.js  # syntax check
+EOF
+      ;;
+
+    touch)
+      cat <<-EOF | batcat --plain --language bash
+touch file.txt      # create one
+touch a b c         # create multiple
+touch existing.txt  # updates timestamp
+EOF
+      ;;
+
+    ls)
+      cat <<-EOF | batcat --plain --language bash
+ls
+ll                # list
+ls -lh            # list+human readable sizes
+el -1             # just the file names
+el -1 --sort type # just the file names
+EOF
+      ;;
+
+    env)
+      cat <<-EOF | batcat --plain --language bash
+env              # all environment variables
+env | grep USER  # filtering
+env - FOO=0 env  # FOO=0 (the only variable!)
+EOF
+      ;;
+
+    prettier)
+      cat <<-EOF | batcat --plain --language bash
+prettier --filepath-name .js  # formats input as if it were js
+prettier --check --write .    # formats files in currnent dir
+EOF
+      ;;
+
+    grep)
+      cat <<-EOF | batcat --plain --language bash
+grep matchterm
+grep -A 99 matchterm  # 99 lines after match too
+EOF
+      ;;
+
+    jq)
+      cat <<-EOF | batcat --plain --language bash
+jq .path file.json              # grabs ".path" from file.json
+cat package.json | jq .scripts  # stdin
+EOF
+      ;;
+
+    readline)
+      cat <<-EOF | cat
+ctrl+backspace - kill word
+EOF
+      ;;
+
+    vscode | code)
+      cat <<-'EOF' | cat
+other
+ctrl+shift+v          toggle vim mode
+ctrl+shift+t          open last closed
+ctrl+backspace        delete word
+ctrl+shift+backspace  delete until start
+
+| main                       | sidebar
+| ctrl+1        focus        | ctrl+shift+e  focus
+| ctrl+w        close tab    | ctrl+shift+v  toggle vim mode
+| ctrl+shift+w  close others | space         open
+| alt+<number>  switch       | enter         open and focus
+| __________________________ | ctrl+q        toggle
+| terminal                   | ctrl+b        toggle
+| ctrl+`        focus        | (vi-able)
+| ctrl+`        toggle       | (need main focus)
+| ctrl+shift+`  maximize     |
+EOF
+      ;;
+
+    esc | caps | capslock | pause)
+      cat <<-'EOF' | cat
+capslock  escape
+ctrl+tab  toggle caps lock
+pause     disabled
+EOF
+      ;;
+  esac
+done
