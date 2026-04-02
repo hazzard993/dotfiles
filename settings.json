@@ -13,7 +13,7 @@
   "window.zoomLevel": 1,
 
   "editor.formatOnSave": true,
-  "vim.disableExtension": true, // enabled view shortcut
+  "vim.disableExtension": true, // enabled via shortcut
   "security.workspace.trust.untrustedFiles": "open",
 
   "editor.rulers": [
