@@ -1,0 +1,96 @@
+[
+  // close others
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "editorTextFocus",
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "-workbench.action.closeWindow",
+  },
+
+  // toggle sidebar
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quickOpenView",
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
+    "when": "editorTextFocus",
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorTextFocus",
+  },
+
+  // allow readline ctrl+p
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen",
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!terminalFocus",
+  },
+
+  // allow readline ctrl+f
+  {
+    "key": "ctrl+f",
+    "command": "-workbench.action.terminal.focusFind",
+  },
+
+  // panels
+  {
+    "key": "ctrl+shift+1",
+    "command": "workbench.action.joinAllGroups",
+  },
+  {
+    "key": "ctrl+shift+2",
+    "command": "workbench.action.splitEditorRight",
+  },
+
+  // terminal max
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.toggleMaximizedPanel",
+  },
+
+  // text editing
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus",
+  },
+  {
+    "key": "ctrl+shift+backspace",
+    "command": "deleteAllLeft",
+    "when": "editorTextFocus",
+  },
+
+  // vim toggle (requires vim extension)
+  {
+    "key": "ctrl+shift+v",
+    "command": "-notebook.cell.pasteAbove",
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "-workbench.action.terminal.paste",
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "toggleVim",
+    "when": "editorTextFocus || sideBarFocus",
+  },
+]
