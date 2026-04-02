@@ -1,0 +1,91 @@
+{
+  "workbench.colorTheme": "GitHub Dark Default",
+
+  "editor.tabSize": 2,
+  "editor.useTabStops": true,
+  "editor.renderWhitespace": "all",
+
+  "workbench.sideBar.location": "right",
+  "workbench.editor.tabSizing": "fixed",
+  "workbench.tree.indent": 6,
+  "workbench.startupEditor": "none",
+
+  "window.zoomLevel": 1,
+
+  "editor.formatOnSave": true,
+  "vim.disableExtension": true, // enabled view shortcut
+  "security.workspace.trust.untrustedFiles": "open",
+
+  "editor.rulers": [
+    {
+      "color": "#1d1d1d4b",
+      "column": 80,
+    },
+  ],
+
+  "[git-commit]": {
+    "editor.rulers": [50, 72],
+    "workbench.editor.restoreViewState": false,
+  },
+
+  "[typescript][typescriptreact][javascript][css][json][jsonc][html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-24.04 (WSL)",
+
+  // opt-out
+  "editor.stickyScroll.enabled": false,
+  "editor.minimap.enabled": false,
+  "chat.disableAIFeatures": true,
+  "chat.edits2.enabled": false,
+  "inlineChat.affordance": "off",
+  "terminal.integrated.stickyScroll.enabled": false,
+  "terminal.integrated.suggest.enabled": false,
+  "extensions.allowOpenInModalEditor": false,
+  "workbench.editor.useModal": "off",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+
+  "cSpell.userWords": [
+    "cdef",
+    "directorydropped",
+    "displayrotated",
+    "errhand",
+    "errorhandler",
+    "filedropped",
+    "gamepadaxis",
+    "gamepadpressed",
+    "gamepadreleased",
+    "handlermapping",
+    "joystickadded",
+    "joystickaxis",
+    "joystickhat",
+    "joystickpressed",
+    "joystickreleased",
+    "joystickremoved",
+    "keypressed",
+    "keyreleased",
+    "lowmemory",
+    "mousefocus",
+    "mousemoved",
+    "mousepressed",
+    "mousereleased",
+    "newstate",
+    "onmount",
+    "screenspace",
+    "setstate",
+    "textedited",
+    "textinput",
+    "threaderror",
+    "toactor",
+    "toinstance",
+    "toscene",
+    "toscreen",
+    "touchmoved",
+    "touchpressed",
+    "touchreleased",
+    "wheelmoved",
+    "writeln",
+  ],
+}
